@@ -19,7 +19,87 @@ $(document).ready(function() {
         alert('Product added to cart!');
       });
     });
-    
+
+// Get the "add to cart" buttons, cart section, and total cost span
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const cart = document.querySelector('.cart');
+const cartItems = cart.querySelector('ul');
+const total = cart.querySelector('.total-cost');
+const viewCartButton = document.querySelector('.view-cart');
+
+// Add click event listeners to all "add to cart" buttons
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', addToCart);
+});
+
+// Add click event listener to the "View Cart" button
+viewCartButton.addEventListener('click', viewCart);
+
+// "Add to Cart" button click event function
+function addToCart(event) {
+  // Get the product name and price from the button's data attributes
+  const productName = event.target.dataset.productName;
+  const productPrice = parseFloat(event.target.dataset.productPrice);
+
+  // Create a new list item for the product
+  const newItem = document.createElement('li');
+  newItem.innerHTML = `${productName} - $${productPrice.toFixed(2)}`;
+
+  // Add the new item to the cart
+  cartItems.appendChild(newItem);
+
+  // Add the item's price to the total
+  let currentTotal = parseFloat(total.innerHTML.substring(1));
+  currentTotal += productPrice;
+  total.innerHTML = `$${currentTotal.toFixed(2)}`;
+
+  // Add to Local Storage
+  const cartData = JSON.parse(localStorage.getItem('cartData')) || {};
+  if (!cartData[productName]) {
+    cartData[productName] = { qty: 1, price: productPrice };
+  } else {
+    cartData[productName].qty += 1;
+  }
+  localStorage.setItem('cartData', JSON.stringify(cartData));
+}
+
+// "View Cart" button click event function
+// "View Cart" button click event function
+function viewCart() {
+  // Show the cart section
+  cart.classList.toggle('visible');
+
+  // Retrieve cart data from LocalStorage
+  const cartData = JSON.parse(localStorage.getItem('cartData'));
+  if (cartData) {
+    // Clear the cart
+    while (cartItems.firstChild) {
+      cartItems.removeChild(cartItems.firstChild);
+    }
+    // Rebuild the cart items
+    let currentTotal = 0;
+    for (const productName in cartData) {
+      const product = cartData[productName];
+      // Create a new list item for the product
+      const newItem = document.createElement('li');
+      newItem.innerHTML = `${productName} - $${(product.price * product.qty).toFixed(2)}`;
+
+      // Add the new item to the cart
+      cartItems.appendChild(newItem);
+
+      // Add the item's price to the total
+      currentTotal += product.price * product.qty;
+    }
+    total.innerHTML = `$${currentTotal.toFixed(2)}`;
+  }
+}
+
+
+
+
+
+
+
     //TODO: Remove Item: You can add a "remove" button next to each item in the cart, which will allow the user to remove an item from the cart if they change their mind.
 
     //TODO: Update Quantity: You can add an input field next to each item in the cart to allow the user to update the quantity of that item in the cart.
