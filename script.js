@@ -64,7 +64,6 @@ function addToCart(event) {
 }
 
 // "View Cart" button click event function
-// "View Cart" button click event function
 function viewCart() {
   // Show the cart section
   cart.classList.toggle('visible');
@@ -93,6 +92,25 @@ function viewCart() {
     total.innerHTML = `$${currentTotal.toFixed(2)}`;
   }
 }
+
+// "View Cart" button
+document.querySelector('.view-cart').addEventListener('click', function() {
+  document.querySelector('.cart').classList.add('visible');
+  document.querySelector('.container').classList.add('blurred');
+});
+
+// Close icon
+document.querySelector('.close-cart').addEventListener('click', function() {
+  document.querySelector('.cart').classList.remove('visible');
+  document.querySelector('.container').classList.remove('blurred');
+});
+
+document.addEventListener('click', function(event) {
+  if (!event.target.classList.contains('cart') && !event.target.classList.contains('view-cart')) {
+    document.querySelector('.cart').classList.remove('visible');
+    document.querySelector('.container').classList.remove('blurred');
+  }
+});
 
 
 
