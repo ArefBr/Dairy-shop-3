@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Adine Dairy Shop</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Adine Dairy Shop</a>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <a href="#" class="btn btn-success">View Cart</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <h4>Filter by:</h4>
+        <form>
+          <div class="form-group">
+            <label for="brand">Brand</label>
+            <select class="form-control" id="brand">
+              <option>Brand 1</option>
+              <option>Brand 2</option>
+              <option>Brand 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <select class="form-control" id="price">
+              <option>$0 - $10</option>
+              <option>$10 - $20</option>
+              <option>$20+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control" id="type">
+              <option>Type 1</option>
+              <option>Type 2</option>
+              <option>Type 3</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success">Filter</button>
+        </form>
+      </div>
+      <div class="col-9">
+        <h3>Products</h3>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="product1.jpg" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">$10</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-success add-to-cart">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="product2.jpg" alt="Product 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">$15</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-success add-to-cart">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="product3.jpg" alt="Product 3">
+                        <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">$20</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-success add-to-cart">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
