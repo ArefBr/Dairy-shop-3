@@ -1,24 +1,24 @@
-$(document).ready(function() {
-    $('.add-to-cart').click(function() {
-        let productName = $(this).closest('.card').find('.card-title').text();
-        let productPrice = $(this).closest('.card').find('.card-text').text();
-        let product = { name: productName, price: productPrice };
+// $(document).ready(function() {
+//     $('.add-to-cart').click(function() {
+//         let productName = $(this).closest('.card').find('.card-title').text();
+//         let productPrice = $(this).closest('.card').find('.card-text').text();
+//         let product = { name: productName, price: productPrice };
     
-        // Check if cart already exists in LocalStorage
-        if (localStorage.getItem("cart") === null) {
-          // If not, create a new cart and add the first item
-          let cart = [];
-          cart.push(product);
-          localStorage.setItem("cart", JSON.stringify(cart));
-        } else {
-          // If yes, retrieve the cart and add the new item
-          let cart = JSON.parse(localStorage.getItem("cart"));
-          cart.push(product);
-          localStorage.setItem("cart", JSON.stringify(cart));
-        }
-        alert('Product added to cart!');
-      });
-    });
+//         // Check if cart already exists in LocalStorage
+//         if (localStorage.getItem("cart") === null) {
+//           // If not, create a new cart and add the first item
+//           let cart = [];
+//           cart.push(product);
+//           localStorage.setItem("cart", JSON.stringify(cart));
+//         } else {
+//           // If yes, retrieve the cart and add the new item
+//           let cart = JSON.parse(localStorage.getItem("cart"));
+//           cart.push(product);
+//           localStorage.setItem("cart", JSON.stringify(cart));
+//         }
+//         alert('Product added to cart!');
+//       });
+//     });
 
 // Get the "add to cart" buttons, cart section, and total cost span
 const addToCartButtons = document.querySelectorAll('.add-to-cart');
@@ -112,7 +112,27 @@ document.addEventListener('click', function(event) {
   }
 });
 
+// $(document).on("click", ".add-to-cart", function(){
+//   $("#popup-notification").show();
+//   setTimeout(function(){
+//     $("#popup-notification").hide();
+//   }, 2000);
+// });
 
+// $(document).on("click", ".close-popup", function(){
+//     $("#popup-notification").hide();
+// });
+
+$(document).on("click", ".add-to-cart", function(){
+  document.querySelector('#popup-notification').classList.add('visible');
+  setTimeout(function(){
+    document.querySelector('#popup-notification').classList.remove('visible');
+  }, 3000);
+});
+
+$(document).on("click", ".close-popup", function(){
+  document.querySelector('#popup-notification').classList.remove('visible');
+});
 
 
 
