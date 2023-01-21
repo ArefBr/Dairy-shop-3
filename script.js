@@ -96,19 +96,19 @@ function viewCart() {
 // "View Cart" button
 document.querySelector('.view-cart').addEventListener('click', function() {
   document.querySelector('.cart').classList.add('visible');
-  document.querySelector('.container').classList.add('blurred');
+  document.querySelector('.body-container').classList.add('blurred');
 });
 
 // Close icon
 document.querySelector('.close-cart').addEventListener('click', function() {
   document.querySelector('.cart').classList.remove('visible');
-  document.querySelector('.container').classList.remove('blurred');
+  document.querySelector('.body-container').classList.remove('blurred');
 });
 
 document.addEventListener('click', function(event) {
   if (!event.target.classList.contains('cart') && !event.target.classList.contains('view-cart')) {
     document.querySelector('.cart').classList.remove('visible');
-    document.querySelector('.container').classList.remove('blurred');
+    document.querySelector('.body-container').classList.remove('blurred');
   }
 });
 
