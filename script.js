@@ -29,6 +29,7 @@ const cartItems = cart.querySelector('.cart-items');
 const total = cart.querySelector('.total-cost');
 const viewCartButton = document.querySelector('.view-cart');
 
+
 // Add click event listeners to all "add to cart" buttons
 
 
@@ -82,22 +83,51 @@ function renderCart() {
       const product = cartData[productName];
       // Create a new list item for the product
       const newItem = document.createElement('li');
-      newItem.innerHTML = `${productName} - $${(product.price * product.qty).toFixed(2)}`;
-
+      newItem.innerHTML = `${productName} x ${product.qty} - $${(product.price * product.qty).toFixed(2)}
+                            <div class="quantity">
+                              <input type="number" min="1" max="50" value="${product.qty}" class="form-control quantity-input" data-product-name="${productName}">
+                            </div>`;
       // Add the new item to the cart
       cartItems.appendChild(newItem);
 
       // Add the item's price to the total
       currentTotal += product.price * product.qty;
+
+
     }
     total.innerHTML = `$${currentTotal.toFixed(2)}`;
   }
+  // Get the quantity input fields
+  const quantityInputs = cartItems.querySelectorAll('.quantity-input');
+
+  // Add change event listeners to all input fields
+  quantityInputs.forEach(input => {
+  input.addEventListener('change', updateQuantity);
+
+});
 }
 // "View Cart" button click event function
 function viewCart() {
   renderCart()
   // Show the cart section
   cart.classList.toggle('visible');
+}
+
+
+// Update Quantity event function
+function updateQuantity(event) {
+  // Get the product name and new quantity from the input field
+  const productName = event.target.dataset.productName;
+  const newQuantity = event.target.value;
+  
+
+  // Update the cart data in Local Storage
+  const cartData = JSON.parse(localStorage.getItem('cartData'));
+  cartData[productName].qty = newQuantity;
+  localStorage.setItem('cartData', JSON.stringify(cartData));
+
+  // Rebuild the cart items
+  renderCart();
 }
 
 // "View Cart" button
@@ -113,8 +143,22 @@ document.querySelector('.close-cart').addEventListener('click', function () {
   document.querySelector('.body-container').classList.remove('blurred');
 });
 
+// Close if click out of cart
+// document.addEventListener('click', function (event) {
+//   if (event.target.closest('.cart') == null && document.querySelector('.cart').classList.contains('visible')) {
+//     document.querySelector('.cart').classList.remove('visible');
+//     document.querySelector('.body-container').classList.remove('blurred');
+//   }
+// });
+
+
 document.addEventListener('click', function (event) {
-  if (!event.target.classList.contains('cart') && !event.target.classList.contains('view-cart')) {
+  if (!event.target.classList.contains('cart')
+      && !event.target.classList.contains('view-cart') 
+      && !event.target.classList.contains('quantity-input')
+      && !event.target.classList.contains('cart-footer')
+      && !event.target.classList.contains('cart-header')
+      && (event.target.closest('.cart') == null)) {
     document.querySelector('.cart').classList.remove('visible');
     document.querySelector('.body-container').classList.remove('blurred');
   }
@@ -131,26 +175,6 @@ $(document).on("click", ".close-popup", function () {
   document.querySelector('#popup-notification').classList.remove('visible');
 });
 
-$.getJSON("products.json", function (data) {
-  // Render the product listing
-  $.each(data, function (i, product) {
-    $("#product-listing").append(`
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="${product.image}" alt="${product.name}">
-          <div class="card-body">
-            <h5 class="card-title">${product.name}</h5>
-            <p class="card-text">${product.price}</p>
-            <div class="d-flex justify-content-center">
-              <button class="btn btn-success add-to-cart" data-product-name="${product.name}" data-product-price="${product.price}">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>`);
-  });
-  // Call the renderCart() function here to retrieve the cart data from LocalStorage and rebuild the cart items
-  renderCart();
-});
 
 
 
