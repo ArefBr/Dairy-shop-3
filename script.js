@@ -123,6 +123,23 @@ $(document).on("click", ".close-popup", function(){
   document.querySelector('#popup-notification').classList.remove('visible');
 });
 
+$.getJSON("products.json", function(data) {
+  $.each(data, function(i, product) {
+      $("#product-listing").append(`
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <img class="card-img-top" src="${product.image}" alt="${product.name}">
+          <div class="card-body">
+            <h5 class="card-title">${product.name}</h5>
+            <p class="card-text">${product.price}</p>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-success add-to-cart" data-product-name="${product.name}" data-product-price="${product.price}">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>`);
+  });
+});
 
 
 
