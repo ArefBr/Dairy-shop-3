@@ -112,17 +112,6 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// $(document).on("click", ".add-to-cart", function(){
-//   $("#popup-notification").show();
-//   setTimeout(function(){
-//     $("#popup-notification").hide();
-//   }, 2000);
-// });
-
-// $(document).on("click", ".close-popup", function(){
-//     $("#popup-notification").hide();
-// });
-
 $(document).on("click", ".add-to-cart", function(){
   document.querySelector('#popup-notification').classList.add('visible');
   setTimeout(function(){
