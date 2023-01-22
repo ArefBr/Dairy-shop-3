@@ -33,7 +33,7 @@
         <a href="#" class="btn btn-success view-cart">View Cart</a>
       </div>
     </nav>
-    <!-- Add a "cart" section to display the total cost and items in the cart -->
+ 
     <div class="container body-container">
       <div class="row">
         <div class="col-md-3">
@@ -72,15 +72,22 @@
         </div>
       </div>
     </div>
+
+   <!-- Add a "cart" section to display the total cost and items in the cart -->
     <div class="cart flex-column">
       <i class="fa fa-times close-cart"></i>
-      <h3>Cart</h3>
-      <ul>
-        <!-- Cart items will be added here dynamically -->
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+      </div>
+      <ul class="cart-items">
+         <!-- Cart items will be added here dynamically -->
       </ul>
-      <p class="total-cost-holder">Total: <span class="total-cost">$0.00</span></p>
-      <a href="#" class="btn btn-success view-cart">Go to Cart</a>
+      <div class="cart-footer">
+        <p class="total-cost-holder">Total: <span class="total-cost">$0.00</span></p>
+        <button class="btn btn-success view-cart">Checkout</button>
+      </div>
     </div>
+  
     <div id="popup-notification" class="popup-notification">
       <p>Item added to cart</p>
       <i class="fa fa-times close-popup"></i>
@@ -88,6 +95,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="loader.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
