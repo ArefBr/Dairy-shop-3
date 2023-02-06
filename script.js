@@ -83,10 +83,10 @@ function renderCart() {
       const product = cartData[productName];
       // Create a new list item for the product
       const newItem = document.createElement('li');
-      newItem.innerHTML = `${productName} x ${product.qty} - $${(product.price * product.qty).toFixed(2)}
-                            <div class="quantity">
-                              <input type="number" min="1" max="50" value="${product.qty}" class="form-control quantity-input" data-product-name="${productName}">
-                            </div>`;
+      newItem.innerHTML = `${productName} x <div class="quantity">
+                                              <input type="number" min="1" max="50" value="${product.qty}" class="form-control quantity-input" data-product-name="${productName}">
+                                            </div> - $${(product.price * product.qty).toFixed(2)}
+`;
       // Add the new item to the cart
       cartItems.appendChild(newItem);
 
@@ -178,7 +178,7 @@ document.getElementById("clear-cart-btn").addEventListener("click", function() {
     // reset total
     currentTotal = 0;
     total.innerHTML = `$${currentTotal.toFixed(2)}`;
-    
+
     renderCart();
   }
 });

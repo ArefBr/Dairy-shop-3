@@ -97,6 +97,18 @@ body {
 	border-bottom: 2px solid #3e965b81;
 }
 
+.cart .quantity {
+	display: inline-block;
+}
+
+.cart .quantity-input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #204627;
+    outline: 0;
+    box-shadow: none;
+}
+
 .cart .total-cost-holder {
 	padding: 10px;
 }
