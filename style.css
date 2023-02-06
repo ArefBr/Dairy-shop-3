@@ -15,6 +15,10 @@ body {
 }
 
 /* general body styling */
+.btn:focus {
+	box-shadow: none;
+}
+
 .btn-success {
 	background-color: #3e965b;
 	color: #F8F9FA;
@@ -33,14 +37,14 @@ body {
 	background-color: #3e965b;
 }
 
-.btn-outline {
-	color: #3e965b;
-	border:solid #3e965b 2px;
+.btn-outline-maroon {
+	color: #9a1515;
+	border:solid #9a1515 2px;
 	background-color: transparent;
 }
 
-.btn-outline:hover {
-	background-color: #3e965b;
+.btn-outline-maroon:hover {
+	background-color: #9a1515;
 	color: #F8F9FA;
 }
 
@@ -126,6 +130,10 @@ body {
 	/* display: inline; */
 	margin-top: 10px;
 	font-size: 0.9em;
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+
 }
 
 /* Close icon styling */
