@@ -88,6 +88,10 @@ body {
 	color: #204627;
 }
 
+.cart h3 .fa-cart-plus{
+	padding:5px 10px 10px 5px;
+}
+
 .cart ul {
 	list-style: none;
 	padding: 0;
